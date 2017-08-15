@@ -1,0 +1,5 @@
+http://www.qdfuns.com前端网(注意里面有好多实用的)！
+http://www.cnblogs.com博客园
+mint-ui vue的移动组件库
+https://www.npmjs.com   node.js第三方模块包比如像node-sass,swipe,vuex,vux,qrcode(二维码)等。要学会安装，学会使用.
+https://vux.li  vux的官方文档

@@ -1,0 +1,49 @@
+公司官网 js99cf.com
+手机app版 m.js99cf.com
+
+sublime常见的一些快捷键
+1、选中所有然后替换 先是选中某一个然后按ctrl+d,然后按backspace，
+2、代码往左缩进，先选中要缩进的代码按ctrl+[键,前进的话就是ctrl+]或者是Tab键。
+3、如果遇到tab键和空格键报错问题,点击右下角Tab-size转换行为缩进。
+4、Alt+shift+2 是代码比对的一个快捷键
+5、ctrl+shift+p是一个万能的快捷键
+6、如果说需要安装插件的话,点击首选项-->package control-->install package
+
+git 使用git上传代码时,先进入当前文件夹内右击git bash,然后git init初始化-->git add .-->git commit -m "说明"-->git push-->git pull
+
+svn 使用SVN上传代码时,先要SVN Checkout一下,把仓库里存放代码的文件夹下载到本机里。然后用编辑器打开你所要编辑的项目,比如今天编辑了index.html。选中该文件右击svn commit上传一下。并且注释一下内容. 
+    每天上班之前都要养成习惯，svn update.如果想要返回以前代码的样子可能需要svn revert.具体的可以百度
+markdown README.md每写一个项目都要有自己的说明文档,这样就要求使用markdown格式。有的代码编辑器要记得安装这样的插件.
+
+安装xampp时可能会遇到端口号被占用的情况,要先卸载那个占用的软件例如(mysql server)并且清理干净，百度上很多的方法，但是要注意几点
+	1.控制面板——》所有控制面板项——》程序和功能，卸载mysql server! 
+	2.一定要删除注册表，运行-》cmd-》regedit，删除 
+	HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL，HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL，HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL的文件夹 
+	3.删除C盘–》C:\Program Files\MySQL里面的文件 
+	4.记得备份数据库数据，目录可能隐藏—C:\ProgramData
+
+安装软件时肯定有自己的.exe文件,如果想要拖到桌面上的话不要直接拖拽.点击该执行文件(.exe)右击发送到桌面快捷方式.还有，安装的时候要看仔细了不要选勾上那些让你下载其他乱七八糟的软件
+
+防火墙的事:防火墙关闭在控制面板-->Windows防火墙-->启用或关闭Windows防火墙。如果要是做手机适配网页的话,需要把防火墙关闭,必须使手机和电脑连接同一个局域网,手机访问网页要先知道该电脑ip地址(window+R输入ipconfig)
+
+
+
+  9.1映射网络驱动器:"映射网络驱动器"是实现磁盘共享的一种方法,具体来说就是利用局域网将自己的数据保存在另外一台电脑上或者把另外一台电脑里的文件虚拟到自己的机器上。
+
+                     把远端共享资源映射到本地后,在"我的电脑"中多了一个盘符,就像自己的电脑上多了一个磁盘,可以很方便进行操作.(如"创建一个文件""复制""粘贴"等)。
+
+                     等效于在"网上邻居"看到共享文件或磁盘,自己可以在权限范围内进行操作。
+  9.2扩展跨域请求:1.什么叫跨域请求(Cross Domain Request)：
+		    某个域名下的资源，想请求另一个域名下的资源
+		    定义：两个资源的访问协议、域名、端口有一丁点"字符串"上的不同，就称为跨域
+		    http://www.tmooc.cn/1.html
+		    <body> ————— tmooc.cn
+			<img src='http://www.baidu.com/logo.png'>
+		     </body>
+		  2.浏览器中哪些请求允许跨域：
+		    1.<img	src="">：跨域请求图片
+		    2.<link href="">：跨域请求css文件
+		    3.<script src="">：跨域请求js文件
+		    4.<iframe src=""></iframe>：跨域请求html文件
+		  3.浏览器中哪些请求不允许跨域：
+		    XHR————出于安全考虑，所有浏览器都禁止XHR跨域请求

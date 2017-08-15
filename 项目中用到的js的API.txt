@@ -1,0 +1,64 @@
+
+1.取一个数组中的最大者 var arr=[1,2,3,4,5];  Math.max.apply(null,arr) ==>5 抽空研究与 Math.max.apply(this, arr)区别
+
+2.伪类元素::after\::before 常见用处两处: 浮动元素的父元素高度(.clear:after{content: '';display: block;clear: both;})   / 外边距溢出  
+	   还有一个本人见同事写的，处理进度条尾部有光环这样特效.
+	   ex:<style lang="stylus">
+		.mt-progress-progress::after
+    		display inline-block
+   		width w=7px
+   		height w
+   		border-radius 50%
+   		content "."
+    		color transparent
+    		background baseColor
+    		position absolute
+    		right -3.5px
+    		top -2px
+    		box-shadow 0 0 0 3px rgba(baseColor .3)
+	     </style>
+	写在了App.vue中的通用样式中(即没有增加scoped只在局部有效);
+
+3.iframe  如果今后在写项目过程中有遇到请求回来的接口是HTML代码形式，就要用到iframe框架.例如消息中心中的公告
+	  ex: iframe#frame-agree.frame-agree
+	      js:
+	      let html = _this.content.html.replace('<head>', '<head><base href="' + _this.content.baseURL + '" />');
+              document.getElementById('frame-agree').contentWindow.document.write(html);
+          可能也会遇到像列表一样需要加载很多,这样可能会产生当下拉的时候,再点击进去看页面的时候页面会随着滚动的距离而变动,所以需要先设置一个方法，即document.body.scrollTop = 0
+
+4.input的type常用的类型有text/number/password(加密) 不常用的有hidden
+
+5.正则:
+    
+   1.设置密码6到20位字母组合 var reg = /^\w{6,20}$/;
+   2.获取短信验证码的时候,一开始要输入手机号点击获取验证码
+
+      button.right#code(@click="coded" ref="mycode") 获取验证码
+
+      let reg=/^\d{11}$/;
+      if(reg.test(self.kw)){
+      // code.innerHTML="";虚拟DOM不能用innerHTML,所以需要引用ref的属性，但是必须要声明常量const self=this,要不然老是报错说mycode is undefined.这是一个坑
+      let n=60; 
+      let time=setInterval(function(){
+        self.$refs.mycode.innerText=`${n}秒`;
+        n--;
+        if(n<60&&n>=0){
+         self.$refs.mycode.setAttribute("disabled",true)//当秒数在0到60秒之内要设置按钮禁止被点击
+        }
+        else if(n==-1){
+        self.$refs.mycode.innerHTML="重新发送"
+          window.clearInterval(time);
+        self.$refs.mycode.removeAttribute("disabled")
+        }
+      },1000);
+      this.time=time;
+6: arr.push用到的也挺多的.
+   
+   必要的时候还可以这么用 var arr=[];
+   			  var obj={};
+			  arr=[obj];
+
+     当返回该页面时候要清除定时器，且要把内容变为之前的
+     self.$router.go(-1);
+     window.clearInterval(self.time);
+     self.$refs.mycode.innerHTML="获取验证码";
