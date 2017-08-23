@@ -1,6 +1,6 @@
 公司官网 js99cf.com
 手机app版 m.js99cf.com
-注销:ctrl+alt+del
+注销/任务管理器:ctrl+alt+del
 sublime常见的一些快捷键
 1、选中所有然后替换 先是选中某一个然后按ctrl+d,然后按backspace，
 2、代码往左缩进，先选中要缩进的代码按ctrl+[键,前进的话就是ctrl+]或者是Tab键。
