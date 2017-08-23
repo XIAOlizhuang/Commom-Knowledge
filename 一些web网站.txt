@@ -4,5 +4,10 @@ mint-ui vue的移动组件库
 https://www.npmjs.com   node.js第三方模块包比如像node-sass,swipe,vuex,vux,qrcode(二维码)等。要学会安装，学会使用.
 https://vux.li  vux的官方文档
 http://docs.sequelizejs.com/(create,query,findAll)
+https://itbilu.com/nodejs/npm/VkYIaRPz-.html(sequelize中文文档)
+Sequelize类是引用sequlize模块后获取一个顶级对象，我们通过它来创建sequlize实例，也可以通过该对象来获取模内其它对象的引用，
+如：Utils工具类、Transaction事务类等。创建实例后，可以通过实例来创建或定义Model（模型）、执行查询、同步数据库结构等操作。
+Sequelize基于Promise实现异步流程控制，但其使用的并不是ECMAScript 6中规定的标准Promise对象，而是使用bluebird，这个模块是对原生Promise的一个扩展。
+(promise是一个es6的一个语法,目的是执行异步的一个操作在node.js中.then后面的就是异步操作.)
 http://www.runoob.com/nodejs/nodejs-web-module.html(node.js使用文档api)
 http://es6.ruanyifeng.com/#README(es6的使用文档)
