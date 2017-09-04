@@ -1,3 +1,7 @@
+在写vue项目的时候难免会下载第三方包的模块,分为 npm i '包名' -S / npm i '包名' -G 必须要大写,这样在package.json中才会显示。
+
+
+
 公司官网 js99cf.com
 手机app版 m.js99cf.com
 注销/任务管理器:ctrl+alt+del

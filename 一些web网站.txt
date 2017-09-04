@@ -1,13 +1,24 @@
 http://www.qdfuns.com前端网(注意里面有好多实用的)！
+
 http://www.cnblogs.com博客园
+
 mint-ui vue的移动组件库
-https://www.npmjs.com   node.js第三方模块包比如像node-sass,swipe,vuex,vux,qrcode(二维码)等。要学会安装，学会使用.
+
+https://www.npmjs.com   node.js第三方模块包比如像node-sass,swipe,vuex,vux,qrcode(二维码)等。要学会安装，学会使用.(最近在项目的example2中下载了vue-echarts-v3  vue版的图标库)
+
 https://vux.li  vux的官方文档
+
 http://docs.sequelizejs.com/(create,query,findAll)
+
 https://itbilu.com/nodejs/npm/VkYIaRPz-.html(sequelize中文文档)
 Sequelize类是引用sequlize模块后获取一个顶级对象，我们通过它来创建sequlize实例，也可以通过该对象来获取模内其它对象的引用，
-如：Utils工具类、Transaction事务类等。创建实例后，可以通过实例来创建或定义Model（模型）、执行查询、同步数据库结构等操作。
-Sequelize基于Promise实现异步流程控制，但其使用的并不是ECMAScript 6中规定的标准Promise对象，而是使用bluebird，这个模块是对原生Promise的一个扩展。
-(promise是一个es6的一个语法,目的是执行异步的一个操作在node.js中.then后面的就是异步操作.)
+
 http://www.runoob.com/nodejs/nodejs-web-module.html(node.js使用文档api)
+
 http://es6.ruanyifeng.com/#README(es6的使用文档)
+
+http://echarts.baidu.com   ECharts，一个纯 Javascript 的图表库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖轻量级的 Canvas 类库 ZRender，
+			   提供直观，生动，可交互，可高度个性化定制的数据可视化图表。
+			   ECharts 3 中更是加入了更多丰富的交互功能以及更多的可视化效果，并且对移动端做了深度的优化。
+
+https://git.oschina.net 码云,类似于git可以存放代码的一个工具
