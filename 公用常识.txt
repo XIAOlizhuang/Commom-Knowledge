@@ -13,6 +13,9 @@ sublime常见的一些快捷键
 5、ctrl+shift+p是一个万能的快捷键
 6、如果说需要安装插件的话,点击首选项-->package control-->install package
 
+环境变量:右击此电脑-->属性-->高级系统配置-->环境变量.一些可执行软件需要配置(ex:node.exe、start.bat、D:\svn\1 Dev\03code\java\play-1.4.4中的play.bat等);
+         如果不配置环境变量的话,项目的启动可能只能在当前可执行文件下才可以.配置环境变量后就可以在全局访问,
+
 git 使用git上传代码时,先进入当前文件夹内右击git bash,然后git init初始化-->git add .-->git commit -m "说明"-->git push-->git pull
 
 svn 使用SVN上传代码时,先要SVN Checkout一下,把仓库里存放代码的文件夹下载到本机里。然后用编辑器打开你所要编辑的项目,比如今天编辑了index.html。选中该文件右击svn commit上传一下。并且注释一下内容. 
