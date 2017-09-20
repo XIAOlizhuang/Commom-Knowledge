@@ -1,0 +1,141 @@
+什么是Prmoise
+　　promise是ES6新增的一个特征，它已被列入ES6的正式规范中
+　　Promise对象可以理解为一次执行的异步操作，使用promise对象之后可以使用一种链式调用的方式来组织代码；让代码更加的直观。也就是说，有了Promise对象，就可以将异步操作以同步的操作的流程表达出来，避免了层层嵌套的回调函数。
+
+示例：未使用promise，回调必须层层嵌套
+$.ajax(url1, function(data1){
+    // do something...
+    $.ajax(url2, function(data2){
+        // do something...
+        $.ajax(url3, function(data3){
+            // do something...
+            done(data3); // 返回数据
+        })
+    });
+});
+ 如果有多个嵌套，导致代码不够直观，而且如果几个操作之前没有前后顺序之分，需要等待上一个操作完成才可以进行下一个操作，造成不必要的等待
+Promise对象的特点：
+
+    1、对象的状态不受外界影响。
+
+  Promise对象代表一个异步操作，有三种状态
+
+pending（执行中）
+Resolved（成功，又称Fulfilled）
+rejected（拒绝）
+其中pending为初始状态，fulfilled和rejected为结束状态（结束状态表示promise的生命周期已结束）。
+promise只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态.。
+   2、一旦状态改变，就不会再变，任何时候都可以得到这个结果
+ Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected
+pending->fulfilled，pending->rejected。
+只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果
+
+Promise对象的缺点：
+
+1、无法取消Promise，一旦新建它就会立即执行，无法中途取消。
+
+2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
+
+3、当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+
+除了IE这种古老的浏览器和一些低版本的安卓外，现代浏览器支持还是挺好的，所以我们可以在谷歌的控制台直接测试我们的代码
+
+回到顶部
+Promise的使用
+先提前说明一下，下面的代码示例，都可以复制到谷歌的控制台就行测试！！
+1、基本用法：
+
+（1）、首先我们new一个Promise,将Promise实例化
+
+（2）、然后在实例化的promise可以传两个参数，一个是成功之后的resolve，一个是失败之后的reject
+
+（3）、Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数
+
+代码如下：
+
+复制代码
+复制代码
+var promise = function(isReady){
+    return new Promise(function(resolve, reject){
+        // do somthing, maybe async
+        if (isReady){
+          return resolve('hello world');
+        } else {
+          return reject('failure');
+        }
+    });
+}
+ 
+//Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数。
+promise(true).then(function(value){
+    // success,这里是resolve的回调函数
+    console.log(value);  //hello world
+}, function(err){
+    // failure，这里是reject的回调函数
+    console.log(err)
+})
+复制代码
+复制代码
+上述代码是执行成功，返回hello world,如果想测试一下失败后的返回值，可以在promise(true).then...这里改为 promise(false).then...即可 
+
+2、链式操作
+
+也许你会说，Promise只是简化层层回调的写法而已吧，其实不然，它的精髓是通过维护状态、传递状态的方式来使回调方式能够及时的调用，因此，相比于callback，它更灵活，更简单。下面我们来看看Promise的链式操作：
+
+复制代码
+复制代码
+makePromise1()
+.then(function(value){
+    console.log(value);
+    return makePromise2();
+})
+.then(function(value){
+    console.log(value);
+    return makePromise3();
+})
+.then(function(value){
+    console.log(value);
+});
+
+function makePromise1(){
+    var p = new Promise(function(resolve, reject){
+        //异步操作
+        setTimeout(function(){
+            console.log('异步任务1');
+            resolve('异步任务1传过来的值');
+        }, 2000);
+    });
+    return p;            
+}
+function makePromise2(){
+    var p = new Promise(function(resolve, reject){
+        //异步操作
+        setTimeout(function(){
+            console.log('异步任务2');
+            resolve('异步任务2传过来的值');
+        }, 2000);
+    });
+    return p;            
+}
+function makePromise3(){
+    var p = new Promise(function(resolve, reject){
+        //异步操作
+        setTimeout(function(){
+            console.log('异步任务3');
+            resolve('异步任务3传过来的值');
+        }, 2000);
+    });
+    return p;            
+}
+复制代码
+复制代码
+上面的代码中，我们有三个异步操作，makePromise1,makePromise2,makePromise3。其中第二个和第三个依次执行，也就是上一个操作完成之后才可以进行。
+
+输出的值为：
+
+异步任务1
+异步任务1传过来的值
+异步任务2
+异步任务2传过来的值
+异步任务3
+异步任务3传过来的值
