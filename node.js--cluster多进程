@@ -1,0 +1,24 @@
+cluster经过好几代的发展，现在已经比较好使了。利用cluster，可以自动完成子进程worker分配request的事情，就不再需要自己写代码在master进程中robin式给每个worker分配任务了。
+const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+  // Fork workers.
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
+  // Workers can share any TCP connection
+  // In this case it is an HTTP server
+  http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('hello world\n');
+  }).listen(80);
+}
+上述简单的代码，就实现了根据CPU个数，创建多个worker。至于实际项目中，是正好一个核对应一个worker呢，还是一个核对应2、3个worker呢，就视情况而定了。如果项目中，等待其他服务器（例如数据库）响应特别长时间，设置2个以上worker应该会更好。
+不过一般而言，一个CPU对一个worker就挺好的了。
